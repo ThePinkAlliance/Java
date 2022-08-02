@@ -9,6 +9,7 @@ public class Main {
     public static int winRandomizer = (int) Math.round(Math.random() * 100);
     public static String balance = money.format(prebalance);
     public static String goal = money.format(pregoal);
+    public static boolean isDead = false;
     public static void main(String[] args) {
 
         boolean NewGSBought = false;
@@ -78,10 +79,16 @@ public class Main {
                     System.out.println("No valid option selected.");
                 } else {
                     if (prebalance >= NGSCost) {
-                        System.out.println("You made it to the new gas station!");
-                        prebalance = prebalance - NGSCost;
-                        balance = money.format(prebalance);
-                        NewGSBought = true;
+                        if (winRandomizer <= 80) {
+                            System.out.println("You made it to the new gas station!");
+                            prebalance = prebalance - NGSCost;
+                            balance = money.format(prebalance);
+                            NewGSBought = true;
+                        } else {
+                            System.out.println("You died in a car crash!");
+                            isDead = true;
+                            break;
+                        }
                     } else {
                         System.out.println("You do not have enough money!");
                     }
@@ -93,10 +100,14 @@ public class Main {
                 break;
             }
         } while (prebalance < pregoal);
-        if (prebalance > 0) {
-            Win.execute();
+        if (isDead) {
+            Dead.execute();
         } else {
-            Lose.execute();
+            if (prebalance > 0) {
+                Win.execute();
+            } else {
+                Lose.execute();
+            }
         }
     }
 

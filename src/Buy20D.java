@@ -11,13 +11,31 @@ public class Buy20D {
             } else {
                 winnings20 = (int) Math.round(Math.random() * 50000);
             }
-            Main.prebalance = Main.prebalance + winnings20;
-            Main.balance = Main.money.format(Main.prebalance);
-            System.out.print("You now have ");
-            System.out.println(Main.balance);
             Main.winRandomizer = (int) Math.round(Math.random() * 100);
+            if (Main.winRandomizer >= 0 && Main.winRandomizer <= 20) {
+                Buy20D.karen();
+            } else {
+                Main.prebalance = Main.prebalance + winnings20;
+                Main.balance = Main.money.format(Main.prebalance);
+                System.out.print("You now have ");
+                System.out.println(Main.balance);
+                Main.winRandomizer = (int) Math.round(Math.random() * 100);
+            }
         } else {
             System.out.println("You do not have enough money!");
         }
+    }
+    public static void karen() {
+        System.out.println("While shopping, a karen in front of you is berating the cashier!");
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        Main.prebalance = Main.prebalance + winnings20;
+        Main.balance = Main.money.format(Main.prebalance);
+        System.out.print("You now have ");
+        System.out.println(Main.balance);
+        Main.winRandomizer = (int) Math.round(Math.random() * 100);
     }
 }

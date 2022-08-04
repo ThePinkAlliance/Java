@@ -4,12 +4,15 @@ public class Buy50D {
     public static void execute() {
         if (Main.prebalance >= FiftyDCost) {
             Main.prebalance = Main.prebalance - FiftyDCost;
-            if (Main.winRandomizer >= 0 && Main.winRandomizer <= 90) {
-                winnings50 = (int) Math.round(Math.random() * 1000);
-            } else if (Main.winRandomizer >= 91 && Main.winRandomizer <= 98) {
+            if (Main.winRandomizer >= 0 && Main.winRandomizer <= 85) {
                 winnings50 = (int) Math.round(Math.random() * 2000);
+            } else if (Main.winRandomizer >= 86 && Main.winRandomizer <= 93) {
+                winnings50 = (int) Math.round(Math.random() * 10000);
+            } else  if (Main.winRandomizer >= 94 && Main.winRandomizer <= 96) {
+                winnings50 = (int) Math.round(Math.random() * 800000);
             } else {
-                winnings50 = (int) Math.round(Math.random() * 100000);
+                System.out.println("While sitting outside scratching your lottery ticket, a hooded man grabbed you, taking you into his van!");
+                Kidnap.driving();
             }
             Main.prebalance = Main.prebalance + winnings50;
             Main.balance = Main.money.format(Main.prebalance);

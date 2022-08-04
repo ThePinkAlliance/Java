@@ -11,10 +11,15 @@ public class Buy100D {
             } else  if (Main.winRandomizer >= 94 && Main.winRandomizer <= 96) {
                 winnings100 = (int) Math.round(Math.random() * 800000);
             } else {
-                System.out.println("While shopping, the store was robbed and you were shot!");
-                Main.isDead = true;
-                Dead.execute();
-                System.exit(1);
+                if (Kidnap.hasKnife) {
+                    System.out.println("While shopping, the store was robbed and he pointed his weapon at you!");
+                    System.out.println("However, you remember that you still have a knife, and you defend yourself, successfully defeating the robber!");
+                } else {
+                    System.out.println("While shopping, the store was robbed and you were shot!");
+                    Main.isDead = true;
+                    Dead.execute();
+                    System.exit(1);
+                }
             }
             Main.prebalance = Main.prebalance + winnings100;
             Main.balance = Main.money.format(Main.prebalance);
